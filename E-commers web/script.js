@@ -283,7 +283,7 @@ function renderProducts(list = products) {
                     <div>
 
                         <div class="product-price">
-                            $${product.price.toFixed(2)}
+                            ${product.price.toFixed(2)} ETB
                         </div>
 
                         <div class="rating">
@@ -658,16 +658,16 @@ function openCart() {
                                     color:#777;
                                 ">
                                     ${item.quantity} ×
-                                    $${item.price.toFixed(2)}
+                                    ${item.price.toFixed(2)} ETB
                                 </div>
 
                             </div>
 
                             <strong>
-                                $${(
+                                ${(
                                     item.price *
                                     item.quantity
-                                ).toFixed(2)}
+                                ).toFixed(2)} ETB
                             </strong>
 
                         </div>
@@ -687,7 +687,7 @@ function openCart() {
                     <span>Total</span>
 
                     <span>
-                        $${total.toFixed(2)}
+                        ${total.toFixed(2)} ETB
                     </span>
 
                 </div>
