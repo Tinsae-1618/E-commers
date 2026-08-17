@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MarketFlow — Decentralized Marketplace</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <span class="logo-mark">M</span>
+        <span>Market<span>Flow</span></span>
+    </div>
+
+    <div class="search-container">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products, brands and categories..."
+        >
+
+        <button id="searchButton">Search</button>
+    </div>
+
+    <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#marketplace">Marketplace</a>
+        <a href="#sell">Sell</a>
+        <a href="#tracking">Track</a>
+    </nav>
+
+    <div class="nav-actions">
+        <button class="icon-btn" id="wishlistButton">
+            ♡
+            <span id="wishlistCount">0</span>
+        </button>
+
+        <button class="icon-btn" id="cartButton">
+            🛒
+            <span id="cartCount">0</span>
+        </button>
+
+        <button class="account-btn" id="accountButton">
+            Account
+        </button>
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <span class="hero-badge">
+            🔐 Secure • Transparent • Community Powered
+        </span>
+
+        <h1>
+            Buy and sell with
+            <span>confidence.</span>
+        </h1>
+
+        <p>
+            A next-generation marketplace connecting buyers,
+            merchants and independent couriers through secure
+            transactions and transparent delivery.
+        </p>
+
+        <div class="hero-buttons">
+            <button class="primary-btn" onclick="scrollToMarketplace()">
+                Explore Marketplace
+            </button>
+
+            <button class="secondary-btn" onclick="openRegister('seller')">
+                Start Selling
+            </button>
+        </div>
+
+        <div class="trust-items">
+
+            <div>
+                <strong>Secure</strong>
+                <small>Escrow protection</small>
+            </div>
+
+            <div>
+                <strong>Fair</strong>
+                <small>Price protection</small>
+            </div>
+
+            <div>
+                <strong>Tracked</strong>
+                <small>Live delivery</small>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+
+        <div class="floating-card card-one">
+            <span>✓</span>
+            <div>
+                <strong>Payment Protected</strong>
+                <small>Funds held in escrow</small>
+            </div>
+        </div>
+
+        <div class="market-orb">
+            <div class="orb-center">
+                M
+            </div>
+
+            <div class="orb-ring ring-one"></div>
+            <div class="orb-ring ring-two"></div>
+            <div class="orb-ring ring-three"></div>
+        </div>
+
+        <div class="floating-card card-two">
+            <span>🚚</span>
+            <div>
+                <strong>Delivery Tracked</strong>
+                <small>ETA 24 minutes</small>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="features-section">
+
+    <div class="section-heading">
+        <span class="eyebrow">WHY MARKETFLOW</span>
+
+        <h2>
+            Commerce built around
+            <span>trust.</span>
+        </h2>
+
+        <p>
+            We combine marketplace technology with secure payments,
+            transparent logistics and social commerce.
+        </p>
+    </div>
+
+    <div class="feature-grid">
+
+        <article class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3>Escrow Protection</h3>
+            <p>
+                Payments remain protected until delivery is
+                verified by the buyer.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon">🚚</div>
+            <h3>Open Delivery Network</h3>
+            <p>
+                Independent couriers can register and earn by
+                delivering marketplace orders.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon">📍</div>
+            <h3>Live Tracking</h3>
+            <p>
+                Buyers can follow delivery progress and estimated
+                arrival time.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon">⚖️</div>
+            <h3>Fair Pricing</h3>
+            <p>
+                Automated pricing controls help protect customers
+                from unreasonable price increases.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3>Social Commerce</h3>
+            <p>
+                Sellers can connect their official social channels
+                directly to their storefront.
+            </p>
+        </article>
+
+        <article class="feature-card">
+            <div class="feature-icon">⭐</div>
+            <h3>Verified Reputation</h3>
+            <p>
+                Reviews and transaction history help buyers make
+                informed purchasing decisions.
+            </p>
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MARKETPLACE
+========================= -->
+
+<section class="marketplace-section" id="marketplace">
+
+    <div class="marketplace-header">
+
+        <div>
+            <span class="eyebrow">MARKETPLACE</span>
+            <h2>Discover products</h2>
+        </div>
+
+        <button class="outline-btn" onclick="openRegister('seller')">
+            + Sell a Product
+        </button>
+
+    </div>
+
+
+    <div class="marketplace-layout">
+
+        <!-- FILTER SIDEBAR -->
+
+        <aside class="filter-sidebar">
+
+            <div class="filter-title">
+                <h3>Filters</h3>
+                <button onclick="resetFilters()">Reset</button>
+            </div>
+
+            <div class="filter-group">
+
+                <label>Category</label>
+
+                <select id="categoryFilter">
+
+                    <option value="all">All Categories</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="home">Home</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="sports">Sports</option>
+                    <option value="food">Food</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label>Price Range</label>
+
+                <div class="price-inputs">
+
+                    <input
+                        type="number"
+                        id="minPrice"
+                        placeholder="Min"
+                    >
+
+                    <input
+                        type="number"
+                        id="maxPrice"
+                        placeholder="Max"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label>Seller Type</label>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" id="verifiedFilter">
+                    Verified sellers
+                </label>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" id="fairPriceFilter">
+                    Fair price only
+                </label>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label>Rating</label>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" value="4" class="rating-filter">
+                    ⭐ 4+
+                </label>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" value="3" class="rating-filter">
+                    ⭐ 3+
+                </label>
+
+            </div>
+
+        </aside>
+
+
+        <!-- PRODUCTS -->
+
+        <main class="products-area">
+
+            <div class="products-toolbar">
+
+                <span id="productCount">
+                    0 products
+                </span>
+
+                <select id="sortProducts">
+
+                    <option value="featured">Featured</option>
+                    <option value="newest">Newest</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+
+                </select>
+
+            </div>
+
+            <div
+                class="products-grid"
+                id="productsGrid">
+            </div>
+
+        </main>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SELLER SECTION
+========================= -->
+
+<section class="sell-section" id="sell">
+
+    <div class="sell-container">
+
+        <div>
+            <span class="eyebrow">FOR MERCHANTS</span>
+
+            <h2>
+                Turn your products into
+                <span>a business.</span>
+            </h2>
+
+            <p>
+                Create your storefront, publish products,
+                connect your social media and reach customers
+                across the marketplace.
+            </p>
+
+            <button
+                class="primary-btn"
+                onclick="openRegister('seller')">
+                Create Seller Account
+            </button>
+        </div>
+
+        <div class="seller-dashboard-preview">
+
+            <div class="dashboard-top">
+                <span>Seller Dashboard</span>
+                <span class="status-online">● Online</span>
+            </div>
+
+            <div class="dashboard-stats">
+
+                <div>
+                    <small>Sales</small>
+                    <strong>$12,840</strong>
+                </div>
+
+                <div>
+                    <small>Orders</small>
+                    <strong>184</strong>
+                </div>
+
+                <div>
+                    <small>Rating</small>
+                    <strong>4.9 ⭐</strong>
+                </div>
+
+            </div>
+
+            <div class="sales-chart">
+
+                <div style="height:35%"></div>
+                <div style="height:52%"></div>
+                <div style="height:42%"></div>
+                <div style="height:70%"></div>
+                <div style="height:62%"></div>
+                <div style="height:88%"></div>
+                <div style="height:76%"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DELIVERY
+========================= -->
+
+<section class="tracking-section" id="tracking">
+
+    <div class="section-heading">
+
+        <span class="eyebrow">SMART LOGISTICS</span>
+
+        <h2>
+            Know where your order
+            <span>is.</span>
+        </h2>
+
+        <p>
+            Our open delivery network connects customers with
+            independent couriers.
+        </p>
+
+    </div>
+
+    <div class="tracking-demo">
+
+        <div class="tracking-map">
+
+            <div class="map-road road-one"></div>
+            <div class="map-road road-two"></div>
+            <div class="map-road road-three"></div>
+
+            <div class="map-pin store-pin">
+                🏪
+            </div>
+
+            <div class="map-pin courier-pin">
+                🚚
+            </div>
+
+            <div class="map-pin destination-pin">
+                📍
+            </div>
+
+            <div class="delivery-route"></div>
+
+        </div>
+
+        <div class="tracking-info">
+
+            <span class="delivery-status">
+                ● IN TRANSIT
+            </span>
+
+            <h3>Your courier is on the way</h3>
+
+            <p>
+                Delivery partner: <strong>Alex M.</strong>
+            </p>
+
+            <div class="eta-box">
+
+                <div>
+                    <small>Estimated arrival</small>
+                    <strong>24 min</strong>
+                </div>
+
+                <div>
+                    <small>Distance remaining</small>
+                    <strong>4.2 km</strong>
+                </div>
+
+            </div>
+
+            <div class="delivery-progress">
+
+                <div class="progress-line">
+                    <div class="progress-fill"></div>
+                </div>
+
+                <div class="progress-labels">
+
+                    <span>Picked up</span>
+                    <span>On the way</span>
+                    <span>Delivered</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+
+            <div class="logo footer-logo">
+                <span class="logo-mark">M</span>
+                Market<span>Flow</span>
+            </div>
+
+            <p>
+                A transparent marketplace built for buyers,
+                merchants and independent couriers.
+            </p>
+
+        </div>
+
+        <div>
+            <h4>Marketplace</h4>
+            <a href="#marketplace">Browse Products</a>
+            <a href="#">Categories</a>
+            <a href="#">Deals</a>
+        </div>
+
+        <div>
+            <h4>Sell</h4>
+            <a href="#sell">Become a Seller</a>
+            <a href="#">Seller Dashboard</a>
+            <a href="#">Seller Protection</a>
+        </div>
+
+        <div>
+            <h4>Delivery</h4>
+            <a href="#tracking">Track Order</a>
+            <a href="#">Become a Courier</a>
+            <a href="#">Delivery Network</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 MarketFlow. Built for transparent commerce.
+    </div>
+
+</footer>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+    class="modal-overlay"
+    id="modalOverlay">
+
+    <div class="modal" id="modal">
+
+        <button
+            class="modal-close"
+            onclick="closeModal()">
+            ×
+        </button>
+
+        <div id="modalContent"></div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
