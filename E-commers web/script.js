@@ -593,19 +593,25 @@ function updateWishlistCount() {
 /* =====================================================
    CART MODAL
 ===================================================== */
+function removeFromCart(id) {
+    // Filter out the selected item
+    cart = cart.filter(item => item.id !== id);
+    
+    // Save state & update badge if you use localStorage/counts
+    localStorage.setItem("cart", JSON.stringify(cart));
+    if (typeof updateCartCount === "function") updateCartCount();
+
+    // Re-render the open cart modal with updated items
+    openCart();
+}
 
 function openCart() {
 
     let total = 0;
 
     cart.forEach(item => {
-
-        total +=
-            item.price *
-            item.quantity;
-
+        total += item.price * item.quantity;
     });
-
 
     modalContent.innerHTML = `
 
@@ -663,12 +669,31 @@ function openCart() {
 
                             </div>
 
-                            <strong>
-                                ${(
-                                    item.price *
-                                    item.quantity
-                                ).toFixed(2)} ETB
-                            </strong>
+                            <div style="display:flex; align-items:center; gap:12px;">
+
+                                <strong>
+                                    ${(
+                                        item.price *
+                                        item.quantity
+                                    ).toFixed(2)} ETB
+                                </strong>
+
+                                <button 
+                                    onclick="removeFromCart(${item.id})"
+                                    style="
+                                        background: #ff4d4d;
+                                        color: white;
+                                        border: none;
+                                        padding: 5px 10px;
+                                        border-radius: 4px;
+                                        cursor: pointer;
+                                        font-size: 12px;
+                                    "
+                                >
+                                    Remove
+                                </button>
+
+                            </div>
 
                         </div>
 
@@ -707,6 +732,9 @@ function openCart() {
     openModal();
 
 }
+
+
+   
 
 
 /* =====================================================
