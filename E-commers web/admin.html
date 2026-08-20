@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MarketFlow - Admin Management System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="admin-body">
+
+  <div class="admin-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>MarketFlow <strong>Admin</strong></span>
+      </div>
+
+      <nav class="sidebar-menu">
+        <a href="#overview" class="menu-item active">
+          <i class="fa-solid fa-chart-pie"></i> Overview
+        </a>
+        <a href="#deposits" class="menu-item">
+          <i class="fa-solid fa-money-bill-transfer"></i> Deposit Requests
+          <span class="badge badge-warning">3 Pending</span>
+        </a>
+        <a href="#users" class="menu-item">
+          <i class="fa-solid fa-users"></i> Buyers & Sellers
+        </a>
+        <a href="#products" class="menu-item">
+          <i class="fa-solid fa-box"></i> Product Listings
+        </a>
+        <a href="#activity" class="menu-item">
+          <i class="fa-solid fa-clock-rotate-left"></i> Interaction Feed
+        </a>
+        <a href="#settings" class="menu-item">
+          <i class="fa-solid fa-sliders"></i> Platform Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="admin-profile">
+          <i class="fa-solid fa-user-gear"></i>
+          <div>
+            <p class="admin-name">Master Admin</p>
+            <span class="admin-role">Superuser</span>
+          </div>
+        </div>
+        <a href="index.html" class="btn-logout" title="Exit to Main Site">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="admin-main">
+      
+      <!-- Top Bar -->
+      <header class="admin-header">
+        <div class="header-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search users, transactions, reference IDs..." />
+        </div>
+        <div class="header-actions">
+          <button class="btn-icon" title="Notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span class="dot"></span>
+          </button>
+          <button class="btn-primary-sm">
+            <i class="fa-solid fa-plus"></i> Manual Adjustment
+          </button>
+        </div>
+      </header>
+
+      <div class="admin-content">
+
+        <!-- Stat Cards Overview -->
+        <section class="stats-grid">
+         <div class="stat-card highlight">
+  <div class="stat-icon warning"><i class="fa-solid fa-building-columns"></i></div>
+  <div class="stat-info">
+    <h3>Pending Bank Deposits</h3>
+    <p class="stat-value">ETB 12,450.00</p>
+    <span class="stat-sub">3 requests awaiting verification</span>
+  </div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-icon success"><i class="fa-solid fa-wallet"></i></div>
+  <div class="stat-info">
+    <h3>Total User Funds</h3>
+    <p class="stat-value">ETB 284,910.00</p>
+    <span class="stat-sub">+12.4% this month</span>
+  </div>
+</div>
+
+<div class="stat-card">
+  <div class="stat-icon primary"><i class="fa-solid fa-handshake"></i></div>
+  <div class="stat-info">
+    <h3>Active Escrow Deals</h3>
+    <p class="stat-value">48 Deals</p>
+    <span class="stat-sub">ETB 34,120 locked in escrow</span>
+  </div>
+</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon primary"><i class="fa-solid fa-handshake"></i></div>
+            <div class="stat-info">
+              <h3>Active Escrow Deals</h3>
+              <p class="stat-value">48 Deals</p>
+              <span class="stat-sub">ETB 34,120 locked in escrow</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Bank Deposit Requests Section -->
+        <section id="deposits" class="admin-card">
+          <div class="card-header">
+            <div>
+              <h2><i class="fa-solid fa-building-columns"></i> Bank Deposit Approval Queue</h2>
+              <p>Verify bank transfer receipts and approve wallet credit deposits.</p>
+            </div>
+            <div class="table-filters">
+              <button class="btn-filter active">All Pending</button>
+              <button class="btn-filter">Approved</button>
+              <button class="btn-filter">Denied</button>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Request ID</th>
+                  <th>User Details</th>
+                  <th>Role</th>
+                  <th>Amount</th>
+                  <th>Bank Ref Number</th>
+                  <th>Submitted Date</th>
+                  <th>Proof</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>#DEP-9082</code></td>
+                  <td>
+                    <div class="user-cell">
+                      <span class="user-avatar">JD</span>
+                      <div>
+                        <strong>John Doe</strong>
+                        <small>john@example.com</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-buyer">Buyer</span></td>
+                  <td class="amount-cell">+ETB 2,500.00</td>
+                  <td><code>TXN-99834112</code></td>
+                  <td>Aug 20, 2026 - 14:22</td>
+                  <td><a href="#" class="link-btn"><i class="fa-solid fa-paperclip"></i> View Receipt</a></td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn-action approve" title="Approve & Credit Balance">
+                        <i class="fa-solid fa-check"></i> Approve
+                      </button>
+                      <button class="btn-action deny" title="Deny Deposit">
+                        <i class="fa-solid fa-xmark"></i> Deny
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><code>#DEP-9081</code></td>
+                  <td>
+                    <div class="user-cell">
+                      <span class="user-avatar seller">ST</span>
+                      <div>
+                        <strong>Tech World Store</strong>
+                        <small>contact@techworld.com</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-seller">Seller</span></td>
+                  <td class="amount-cell">+ETB 8,000.00</td>
+                  <td><code>TXN-88412001</code></td>
+                  <td>Aug 20, 2026 - 11:05</td>
+                  <td><a href="#" class="link-btn"><i class="fa-solid fa-paperclip"></i> View Receipt</a></td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn-action approve" title="Approve & Credit Balance">
+                        <i class="fa-solid fa-check"></i> Approve
+                      </button>
+                      <button class="btn-action deny" title="Deny Deposit">
+                        <i class="fa-solid fa-xmark"></i> Deny
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><code>#DEP-9079</code></td>
+                  <td>
+                    <div class="user-cell">
+                      <span class="user-avatar">AS</span>
+                      <div>
+                        <strong>Alice Smith</strong>
+                        <small>alice@domain.org</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-buyer">Buyer</span></td>
+                  <td class="amount-cell">+ETB 1,950.00</td>
+                  <td><code>TXN-77312904</code></td>
+                  <td>Aug 19, 2026 - 18:40</td>
+                  <td><a href="#" class="link-btn"><i class="fa-solid fa-paperclip"></i> View Receipt</a></td>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="btn-action approve" title="Approve & Credit Balance">
+                        <i class="fa-solid fa-check"></i> Approve
+                      </button>
+                      <button class="btn-action deny" title="Deny Deposit">
+                        <i class="fa-solid fa-xmark"></i> Deny
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- User Accounts & Interactions Grid -->
+        <div class="dashboard-split">
+
+          <!-- User Management Column -->
+          <section id="users" class="admin-card">
+            <div class="card-header">
+              <h2><i class="fa-solid fa-users"></i> Users Management</h2>
+              <button class="btn-secondary-sm">View All</button>
+            </div>
+            <div class="table-wrapper">
+              <table class="admin-table compact">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Role</th>
+                    <th>Wallet Balance</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong>John Doe</strong>
+                      <small>ID: #USR-102</small>
+                    </td>
+                    <td><span class="badge badge-buyer">Buyer</span></td>
+                    <td>ETB 4,120.00</td>
+                    <td><span class="status-indicator active">Active</span></td>
+                    <td>
+                      <button class="btn-icon-sm" title="Edit Balance / Freeze">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Tech World Store</strong>
+                      <small>ID: #USR-504</small>
+                    </td>
+                    <td><span class="badge badge-seller">Seller</span></td>
+                    <td>ETB 18,450.00</td>
+                    <td><span class="status-indicator active">Active</span></td>
+                    <td>
+                      <button class="btn-icon-sm" title="Edit Balance / Freeze">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Bad Actor Account</strong>
+                      <small>ID: #USR-991</small>
+                    </td>
+                    <td><span class="badge badge-buyer">Buyer</span></td>
+                    <td>ETB 0.00</td>
+                    <td><span class="status-indicator suspended">Suspended</span></td>
+                    <td>
+                      <button class="btn-icon-sm" title="Edit Balance / Freeze">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Interaction & Activity Feed Column -->
+          <section id="activity" class="admin-card">
+            <div class="card-header">
+              <h2><i class="fa-solid fa-clock-rotate-left"></i> Live Interaction Logs</h2>
+              <span class="live-pulse"><i class="fa-solid fa-circle"></i> Live Feed</span>
+            </div>
+            <div class="activity-feed">
+              
+              <div class="feed-item">
+                <div class="feed-icon deposit"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="feed-content">
+                  <p><strong>John Doe</strong> submitted a deposit request of <strong>ETB 2,500.00</strong> via Bank Wire.</p>
+                  <span class="feed-time">5 minutes ago</span>
+                </div>
+              </div>
+
+              <div class="feed-item">
+                <div class="feed-icon escrow"><i class="fa-solid fa-lock"></i></div>
+                <div class="feed-content">
+                  <p>Escrow payment of <strong>ETB 1,200.00</strong> locked for Order <strong>#ORD-4491</strong> (Buyer: Alice S. $\rightarrow$ Tech World).</p>
+                  <span class="feed-time">18 minutes ago</span>
+                </div>
+              </div>
+
+              <div class="feed-item">
+                <div class="feed-icon approved"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="feed-content">
+                  <p>Admin approved bank deposit of <strong>ETB 500.00</strong> for account <strong>#USR-312</strong>.</p>
+                  <span class="feed-time">1 hour ago</span>
+                </div>
+              </div>
+
+              <div class="feed-item">
+                <div class="feed-icon listing"><i class="fa-solid fa-plus"></i></div>
+                <div class="feed-content">
+                  <p><strong>Tech World Store</strong> published new listing: <em>Wireless Noise Canceling Headphones</em>.</p>
+                  <span class="feed-time">2 hours ago</span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </main>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
